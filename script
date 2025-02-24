@@ -1,0 +1,28 @@
+var (
+		n           = 1041
+		binaryGapCount = 0
+		counting    = false // Starts counting gaps from the first 1
+		previousBit = '0'
+	)
+
+	binStr := strconv.FormatInt(int64(n), 2)
+	fmt.Print(binStr)
+	for _, char := range binStr {
+		if char == '1' {
+			if counting && previousBit == '0' {
+				binaryGapCount++
+			}
+			counting = true
+		}
+		// if char == '0' && counting true {
+		//     boundaryCount++
+		//     if boundaryCount > 1 {
+		//         binaryGapCount++
+		//         boundaryCount = 1
+		//     }
+		// }
+		previousBit = char
+	}
+
+    fmt.Println("binaryGapCount: ")
+    fmt.Println(binaryGapCount)
